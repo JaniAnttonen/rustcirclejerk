@@ -1,20 +1,15 @@
 use std::env;
 
 fn main() {
-  let args: Vec<_> = env::args().collect();
+  let mut args: Vec<_> = env::args().collect();
 
-  let mut x = match args[1].parse::<i32>() {
-    Ok(i) => i,
-    Err(e) => {
-      -1
-    }
+  if args.len() < 3 {
+    args.push("310".to_string());
+    args.push("140".to_string());
   };
-  let mut y = match args[2].parse::<i32>() {
-    Ok(i) => i,
-    Err(e) => {
-      -1
-    }
-  };
+  
+  let mut x = args[1].parse().unwrap_or(0);;
+  let mut y = args[2].parse().unwrap_or(0);;
   let mut z;
 
   println!("The greatest common divisor of {} and {} is:", x, y);
@@ -26,6 +21,7 @@ fn main() {
       y % x
     };
 
+    println!("{}", z);
     if z == 1 {
       println!("{}", 1);
       break;
