@@ -1,13 +1,14 @@
 use std::env;
+use std::process;
 
 fn main() {
   // Get console arguments
-  let mut args: Vec<_> = env::args().collect();
+  let args: Vec<_> = env::args().collect();
 
-  // Assign default values if input is not big enough
+  // Give info if input is not long enough
   if args.len() < 3 {
-    args.push("310".to_string());
-    args.push("140".to_string());
+    println!("Provide the script with two integers!");
+    process::exit(0);
   };
   
   // Assign console input to variables
